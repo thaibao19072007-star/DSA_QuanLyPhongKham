@@ -39,7 +39,7 @@ struct PhongKham {
 
         ListPatient.clear();
     }
-  bool HuyLuotKham(string& id){
+      bool HuyLuotKham(string& id){
         Patient* p = myHashTable.find(id);
 
         if(p == nullptr || p->trangThai != CHO_KHAM) return false;
@@ -54,6 +54,9 @@ struct PhongKham {
             }
         }
 
+        delete p;
+        return true;
+    }
         if(LuaChon == 5){
             cout << "Nhap ma BN can huy kham: ";
             cin >> id;
@@ -65,4 +68,3 @@ struct PhongKham {
                 cout << "Khong tim thay benh nhan de huy!" << el;
             }
         }
-        
