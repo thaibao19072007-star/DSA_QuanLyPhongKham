@@ -1,3 +1,10 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define el "\n"
+
+const int maxQueue = 100;
+
 enum TrangThai
 {
     CHO_KHAM,
@@ -145,6 +152,36 @@ struct maxHeap
         }
     }
 
+    void remove(Patient* v){
+
+        if(isEmpty()) return;
+
+        int currIndex = v->heapIndex;
+
+        if(currIndex == -1){
+            return;
+        }
+
+        if(currIndex < 1 or currIndex > size or a[currIndex] != v){
+            return;
+        }
+
+        if(currIndex == size){
+            a[currIndex] = nullptr;
+            size--;
+            v->heapIndex = -1;
+            return;
+        }
+
+        a[currIndex] = a[size];
+        a[currIndex]->heapIndex = currIndex;
+        
+        size--;
+        v->heapIndex = -1;
+
+        if(currIndex > 1 and bigger(currIndex, currIndex / 2))  heapifyUp(currIndex);
+        else heapifyDown(currIndex);
+    }
 
     void Swap(int i, int j){
         swap(a[i], a[j]);
@@ -222,6 +259,18 @@ struct PhongKham
 
 int main(){
     while(1){
+        if(LuaChon == 3){
+            cout << "So luong benh nhan dang cho kham la: " << myDS.amountWaiting() << el;
+            
+            if(myDS.amountWaiting() >= maxQueue){
+                cout << "CANH BAO: Phong kham dang trong tinh trang QUA TAI!" << el;
+                cout << "Goi y: Nen ngung tiep nhan dang ky moi." << el;
+            }
+            else{
+                cout << "Tinh trang phong kham binh thuong. (Chua qua tai)" << el;
+            }
+        }
+
         if(LuaChon == 8){
             int MucDoMoi;
 
