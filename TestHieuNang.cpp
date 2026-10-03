@@ -39,7 +39,7 @@ int main() {
 
         fout << maBN << "," << hoTen << "," << mucDo << "," 
              << day << "," << month << "," << year << "," 
-             << hour << "," << minute << "," << 0 << "," << trangThai << "\n";
+             << hour << "," << minute << "," << (trangThai == "TAM_HOAN") << "," << trangThai << "\n";
     }
     
     fout.close();
