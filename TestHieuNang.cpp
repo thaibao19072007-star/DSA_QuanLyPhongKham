@@ -13,6 +13,7 @@ int main() {
     string ten[] = {"Anh", "Binh", "Chau", "Dung", "Giang", "Hai", "Hung", "Khai", "Linh", "Mai"};
     
     srand(time(NULL));
+    cout << "Dang tao 10.000 du lieu... Vui long doi...\n";
     
     for (int i = 1; i <= 10000; i++) {
         string maBN = "BN";
@@ -28,21 +29,22 @@ int main() {
         int day = rand() % 28 + 1;
         int month = rand() % 12 + 1;
         int year = 2026;
-        int hour = rand() % 12 + 7;
+        int hour = rand() % 12 + 7; 
         int minute = rand() % 60;
         
         int r = rand() % 100;
         string trangThai = "CHO_KHAM";
-        if (r >= 70 && r < 80) trangThai = "TAM_HOAN";
-        else if (r >= 80 && r < 85) trangThai = "DANG_KHAM";
-        else if (r >= 85) trangThai = "DA_KHAM";
+        if (r >= 80 && r < 90) trangThai = "TAM_HOAN";
+        else if (r >= 90) trangThai = "DA_KHAM";
+
+        int isPriority = (trangThai == "TAM_HOAN") ? 1 : 0;
 
         fout << maBN << "," << hoTen << "," << mucDo << "," 
              << day << "," << month << "," << year << "," 
-             << hour << "," << minute << "," << (trangThai == "TAM_HOAN") << "," << trangThai << "\n";
+             << hour << "," << minute << "," << isPriority << "," << trangThai << "\n";
     }
     
     fout.close();
-    cout << "Da tao xong 10000 vao file 'patients.csv'!\n";
+    cout << "Da tao xong 10.000 ho so vao file 'patients.csv'!\n";
     return 0;
 }
